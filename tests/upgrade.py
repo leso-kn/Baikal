@@ -34,7 +34,7 @@ database:
         f.write(config)
     assert_upgrade(browser)
     
-def ignored_test_pgsql(browser: mechanicalsoup.StatefulBrowser):
+def test_pgsql(browser: mechanicalsoup.StatefulBrowser):
     install_pgsql(browser) # Creates a proper database
     config = f"""
 system:
@@ -50,7 +50,7 @@ system:
     invite_from: noreply@localhost
 database:
     sqlite_file: {os.getcwd()}/Specific/db/db.sqlite
-    backend: postgres
+    backend: pgsql
     pgsql_host: 127.0.0.1
     pgsql_dbname: baikal_test
     pgsql_username: baikal
